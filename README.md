@@ -30,3 +30,5 @@
 |                           | PATCH  | /users/:id(.:format)             | users#update                    |
 |                           | PUT    | /users/:id(.:format)             | users#update                    |
 |                           | DELETE | /users/:id(.:format)             | users#destroy                   |
+
+Thats all for now.
