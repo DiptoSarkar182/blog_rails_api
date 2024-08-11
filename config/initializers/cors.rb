@@ -10,11 +10,11 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     if Rails.env.development?
       origins 'http://localhost:5173'
     elsif Rails.env.production?
-      origins 'https://blog-fe-sigma.vercel.app/'
+      origins 'https://blog-fe-sigma.vercel.app'
     end
 
-    resource "*",
-      headers: :any,
-      methods: [:get, :post, :put, :patch, :delete, :options, :head]
+    resource '*',
+             headers: :any,
+             methods: [:get, :post, :put, :patch, :delete, :options, :head]
   end
 end
