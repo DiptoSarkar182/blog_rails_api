@@ -30,7 +30,9 @@ class BlogsController < ApplicationController
   end
 
   def show
-    render json: { status: 'success', data: @blog }, status: :ok
+    blog = @blog.as_json
+    blog[:name] = @blog.user.name
+    render json: { status: 'success', data: blog }, status: :ok
   end
 
   def update
