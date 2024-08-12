@@ -16,10 +16,14 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   # Defines the root path route ("/")
+  # To wake up the server from FE request.
   get '/status', to: proc { [200, {}, ['OK']] }
+
   resources :users do
     collection do
       get :profile
     end
   end
+
+  resources :blogs, only: [:index, :create, :show, :update, :destroy]
 end
