@@ -31,4 +31,12 @@
 |                           | PUT    | /users/:id(.:format)             | users#update                    |
 |                           | DELETE | /users/:id(.:format)             | users#destroy                   |
 
-Thats all for now.
+### Blog CRUD
+| Prefix                    | Verb   | URI Pattern                     | Controller#Action |
+|---------------------------|--------|---------------------------------|-------------------|
+| blogs                     | GET    | /blogs(.:format)                | blogs#index       |
+|                           | POST   | /blogs(.:format)                | blogs#create      |
+| blog                      | GET    | /blogs/:id(.:format)            | blogs#show        |
+|                           | PATCH  | /blogs/:id(.:format)            | blogs#update      |
+|                           | PUT    | /blogs/:id(.:format)            | blogs#update      |
+|                           | DELETE | /blogs/:id(.:format)            | blogs#destroy     |
