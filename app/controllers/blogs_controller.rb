@@ -5,11 +5,14 @@ class BlogsController < ApplicationController
 
   def index
     begin
-      blogs = Blog.all
+      blogs = Blog.includes(:user).all
       if blogs.empty?
         render json: { status: 'success', message: 'No blogs found', data: [] }, status: :ok
       else
-        render json: { status: 'success', data: blogs }, status: :ok
+        blogs_with_user_names = blogs.map do |blog|
+          blog.as_json.merge(name: blog.user.name)
+        end
+        render json: { status: 'success', data: blogs_with_user_names }, status: :ok
       end
     rescue => e
       render json: { status: 'error', message: 'Failed to fetch blogs', errors: e.message }, status: :internal_server_error
