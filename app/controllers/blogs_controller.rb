@@ -9,10 +9,12 @@ class BlogsController < ApplicationController
       if blogs.empty?
         render json: { status: 'success', message: 'No blogs found', data: [] }, status: :ok
       else
-        blogs_with_user_names = blogs.map do |blog|
-          blog.as_json.merge(name: blog.user.name)
+        blogs_with_user_names_and_images = blogs.map do |blog|
+          blog_data = blog.as_json.merge(name: blog.user.name)
+          blog_data[:blog_image_url] = url_for(blog.blog_image) if blog.blog_image.attached?
+          blog_data
         end
-        render json: { status: 'success', data: blogs_with_user_names }, status: :ok
+        render json: { status: 'success', data: blogs_with_user_names_and_images }, status: :ok
       end
     rescue => e
       render json: { status: 'error', message: 'Failed to fetch blogs', errors: e.message }, status: :internal_server_error
@@ -32,6 +34,7 @@ class BlogsController < ApplicationController
   def show
     blog = @blog.as_json
     blog[:name] = @blog.user.name
+    blog[:blog_image_url] = url_for(@blog.blog_image) if @blog.blog_image.attached?
     render json: { status: 'success', data: blog }, status: :ok
   end
 
@@ -59,7 +62,7 @@ class BlogsController < ApplicationController
   end
 
   def blog_params
-    params.require(:blog).permit(:title, :content)
+    params.require(:blog).permit(:title, :content, :blog_image)
   end
 
 end
