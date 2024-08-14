@@ -1,42 +1,43 @@
-### Authentication Routes
-| Prefix                    | Verb   | URI Pattern                      | Controller#Action               |
-|---------------------------|--------|----------------------------------|---------------------------------|
-| new_user_session          | GET    | /users/sign_in(.:format)         | users/sessions#new              |
-| user_session              | POST   | /users/sign_in(.:format)         | users/sessions#create           |
-| destroy_user_session      | DELETE | /users/sign_out(.:format)        | users/sessions#destroy          |
+# Blog Rails API
 
-### Registration Routes
-| Prefix                    | Verb   | URI Pattern                      | Controller#Action               |
-|---------------------------|--------|----------------------------------|---------------------------------|
-| cancel_user_registration  | GET    | /users/sign_up/cancel(.:format)  | users/registrations#cancel      |
-| new_user_registration     | GET    | /users/sign_up/sign_up(.:format) | users/registrations#new         |
-| edit_user_registration    | GET    | /users/sign_up/edit(.:format)    | users/registrations#edit        |
-| user_registration         | PATCH  | /users/sign_up(.:format)         | users/registrations#update      |
-|                           | PUT    | /users/sign_up(.:format)         | users/registrations#update      |
-|                           | DELETE | /users/sign_up(.:format)         | users/registrations#destroy     |
-|                           | POST   | /users/sign_up(.:format)         | users/registrations#create      |
+## Introduction
 
-### User Profile Route
-| Prefix                    | Verb   | URI Pattern                      | Controller#Action               |
-|---------------------------|--------|----------------------------------|---------------------------------|
-| profile_users             | GET    | /users/profile(.:format)         | users#profile                   |
+This is a backend which handles blogs CRUD operation with user authentication and authorization.
 
-### User Management Routes
-| Prefix                    | Verb   | URI Pattern                      | Controller#Action               |
-|---------------------------|--------|----------------------------------|---------------------------------|
-| users                     | GET    | /users(.:format)                 | users#index                     |
-|                           | POST   | /users(.:format)                 | users#create                    |
-| user                      | GET    | /users/:id(.:format)             | users#show                      |
-|                           | PATCH  | /users/:id(.:format)             | users#update                    |
-|                           | PUT    | /users/:id(.:format)             | users#update                    |
-|                           | DELETE | /users/:id(.:format)             | users#destroy                   |
+## Frontend Repository and Live Link
+- FE Repo: [https://github.com/DiptoSarkar182/blog_FE](https://github.com/DiptoSarkar182/blog_FE)
+- Live Link: [https://blog-fe-sigma.vercel.app/](https://blog-fe-sigma.vercel.app/)
 
-### Blog CRUD
-| Prefix                    | Verb   | URI Pattern                     | Controller#Action |
-|---------------------------|--------|---------------------------------|-------------------|
-| blogs                     | GET    | /blogs(.:format)                | blogs#index       |
-|                           | POST   | /blogs(.:format)                | blogs#create      |
-| blog                      | GET    | /blogs/:id(.:format)            | blogs#show        |
-|                           | PATCH  | /blogs/:id(.:format)            | blogs#update      |
-|                           | PUT    | /blogs/:id(.:format)            | blogs#update      |
-|                           | DELETE | /blogs/:id(.:format)            | blogs#destroy     |
+## Routes
+All the routes can be found [here](/config/ROUTES.md)
+
+## Features
+- User authentication and authorization using Devise and Devise-JWT
+- CRUD operations for blogs
+- Image upload and management using Active Storage and Cloudinary
+- JSON responses for API endpoints
+
+## Technology Used
+
+- Ruby on Rails --api
+- PostgreSQL
+- Devise & Devise-JWT
+- Active Storage
+- Cloudinary
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development.
+
+### Prerequisites
+
+You need to have Ruby and Rails installed on your machine. See [this guide](https://guides.rubyonrails.org/getting_started.html#creating-a-new-rails-project-installing-rails) for instructions on setting up Rails.
+
+### Installing
+
+1. Clone the repository: `git clone https://github.com/DiptoSarkar182/blog_rails_api`
+2. Navigate into the project directory: `cd blog_rails_api`
+3. Install the dependencies: `bundle install`
+4. Set up the database: `rails db:create db:migrate`
+5. Start the server: `rails server`
+6. Visit `http://localhost:3000/` in your browser to access the application.
