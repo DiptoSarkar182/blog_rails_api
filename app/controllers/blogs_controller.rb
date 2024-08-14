@@ -5,7 +5,7 @@ class BlogsController < ApplicationController
 
   def index
     begin
-      blogs = Blog.includes(:user).all
+      blogs = Blog.includes(:user).order(updated_at: :desc)
       if blogs.empty?
         render json: { status: 'success', message: 'No blogs found', data: [] }, status: :ok
       else
