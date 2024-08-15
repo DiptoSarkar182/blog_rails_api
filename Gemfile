@@ -47,3 +47,4 @@ gem 'devise-jwt'
 gem 'jsonapi-serializer'
 gem 'cloudinary'
 gem 'paperclip-cloudinary'
+gem "letter_opener", group: :development

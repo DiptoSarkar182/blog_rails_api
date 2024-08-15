@@ -7,5 +7,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :jwt_authenticatable, jwt_revocation_strategy: self
 
+  validates :password, confirmation: true
+  validates :password_confirmation, presence: true, on: :create
+
   has_many :blogs
 end

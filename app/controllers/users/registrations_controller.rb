@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Users::RegistrationsController < Devise::RegistrationsController
   respond_to :json
 
@@ -22,4 +20,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  # Override the sign_up_params method to permit password_confirmation
+  def sign_up_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
 end
